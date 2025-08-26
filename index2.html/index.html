@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petanque Matchprotokoll</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            color: #2c5545;
+            text-align: center;
+            border-bottom: 2px solid #2c5545;
+            padding-bottom: 10px;
+        }
+        .match-info {
+            background-color: #f5f9f7;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .team-section {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            gap: 20px;
+        }
+        .team {
+            flex: 1;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #2c5545;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .summary {
+            background-color: #e9f5f0;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        button {
+            background-color: #2c5545;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #3a6b58;
+        }
+        @media print {
+            button {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Petanque Matchprotokoll</h1>
+    
+    <div class="match-info">
+        <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+            <div>
+                <label>Datum:</label>
+                <input type="date" id="match-date">
+            </div>
+            <div>
+                <label>Plats:</label>
+                <input type="text" id="match-location">
+            </div>
+            <div>
+                <label>Typ av match:</label>
+                <select id="match-type">
+                    <option value="träning">Träning</option>
+                    <option value="tävling">Tävling</option>
+                    <option value="cup">Cup</option>
+                    <option value="serie">Serie</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    
+    <div class="team-section">
+        <div class="team">
+            <h3>Lag 1</h3>
+            <div>
+                <label>Lag Namn:</label>
+                <input type="text" id="team1-name">
+            </div>
+            <div style="margin-top: 10px;">
+                <label>Spelare:</label>
+                <input type="text" id="team1-player1" placeholder="Spelare 1">
+                <input type="text" id="team1-player2" placeholder="Spelare 2" style="margin-top: 5px;">
+                <input type="text" id="team1-player3" placeholder="Spelare 3" style="margin-top: 5px;">
+            </div>
+        </div>
+        
+        <div class="team">
+            <h3>Lag 2</h3>
+            <div>
+                <label>Lag Namn:</label>
+                <input type="text" id="team2-name">
+            </div>
+            <div style="margin-top: 10px;">
+                <label>Spelare:</label>
+                <input type="text" id="team2-player1" placeholder="Spelare 1">
+                <input type="text" id="team2-player2" placeholder="Spelare 2" style="margin-top: 5px;">
+                <input type="text" id="team2-player3" placeholder="Spelare 3" style="margin-top: 5px;">
+            </div>
+        </div>
+    </div>
+    
+    <h3>Poängfördelning</h3>
+    <table id="score-table">
+        <thead>
+            <tr>
+                <th>Omgång</th>
+                <th id="team1-header">Lag 1</th>
+                <th id="team2-header">Lag 2</th>
+                <th>Vinnare av omgången</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td><input type="number" min="0" class="score-input" data-team="1" data-round="1"></td>
+                <td><input type="number" min="0" class="score-input" data-team="2" data-round="1"></td>
+                <td class="round-winner" data-round="1"></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td><input type="number" min="0" class="score-input" data-team="1" data-round="2"></td>
+                <td><input type="number" min="0" class="score-input" data-team="2" data-round="2"></td>
+                <td class="round-winner" data-round="2"></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td><input type="number" min="0" class="score-input" data-team="1" data-round="3"></td>
+                <td><input type="number" min="0" class="score-input" data-team="2" data-round="3"></td>
+                <td class="round-winner" data-round="3"></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td><input type="number" min="0" class="score-input" data-team="1" data-round="4"></td>
+                <td><input type="number" min="0" class="score-input" data-team="2" data-round="4"></td>
+                <td class="round-winner" data-round="4"></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td><input type="number" min="0" class="score-input" data-team="1" data-round="5"></td>
+                <td><input type="number" min="0" class="score-input" data-team="2" data-round="5"></td>
+                <td class="round-winner" data-round="5"></td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td><input type="number" min="0" class="score-input" data-team="1" data-round="6"></td>
+                <td><input type="number" min="0" class="score-input" data-team="2" data-round="6"></td>
+                <td class="round-winner" data-round="6"></td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td><input type="number" min="0" class="score-input" data-team="1" data-round="7"></td>
+                <td><input type="number" min="0" class="score-input" data-team="2" data-round="7"></td>
+                <td class="round-winner" data-round="7"></td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td><input type="number" min="0" class="score-input" data-team="1" data-round="8"></td>
+                <td><input type="number" min="0" class="score-input" data-team="2" data-round="8"></td>
+                <td class="round-winner" data-round="8"></td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td><input type="number" min="0" class="score-input" data-team="1" data-round="9"></td>
+                <td><input type="number" min="0" class="score-input" data-team="2" data-round="9"></td>
+                <td class="round-winner" data-round="9"></td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td><input type="number" min="0" class="score-input" data-team="1" data-round="10"></td>
+                <td><input type="number" min="0" class="score-input" data-team="2" data-round="10"></td>
+                <td class="round-winner" data-round="10"></td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td><input type="number" min="0" class="score-input" data-team="1" data-round="11"></td>
+                <td><input type="number" min="0" class="score-input" data-team="2" data-round="11"></td>
+                <td class="round-winner" data-round="11"></td>
+            </tr>
+            <tr>
+                <td>12</td>
+                <td><input type="number" min="0" class="score-input" data-team="1" data-round="12"></td>
+                <td><input type="number" min="0" class="score-input" data-team="2" data-round="12"></td>
+                <td class="round-winner" data-round="12"></td>
+            </tr>
+            <tr>
+                <td>13</td>
+                <td><input type="number" min="0" class="score-input" data-team="1" data-round="13"></td>
+                <td><input type="number" min="0" class="score-input" data-team="2" data-round="13"></td>
+                <td class="round-winner" data-round="13"></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Totalt</th>
+                <th id="team1-total">0</th>
+                <th id="team2-total">0</th>
+                <th id="match-winner">-</th>
+            </tr>
+        </tfoot>
+    </table>
+    
+    <div class="summary">
+        <h3>Matchsammanfattning</h3>
+        <div>
+            <label>Antal omgångar:</label>
+            <span id="rounds-played">0</span>
+        </div>
+        <div>
+            <label>Vinnande lag:</label>
+            <span id="final-winner">-</span>
+        </div>
+        <div>
+            <label>Noteringar:</label><br>
+            <textarea id="match-notes" rows="4" style="width: 100%; margin-top: 5px;" placeholder="Skriv ner viktiga händelser, observationer, etc."></textarea>
+        </div>
+    </div>
+    
+    <button id="print-btn">Skriv ut protokoll</button>
+    <button id="reset-btn">Återställ formulär</button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sätt dagens datum som standard
+            document.getElementById('match-date').valueAsDate = new Date();
+            
+            // Uppdatera lagheaders när namn ändras
+            document.getElementById('team1-name').addEventListener('input', updateHeaders);
+            document.getElementById('team2-name').addEventListener('input', updateHeaders);
+            
+            // Lägg till händelselyssnare för poänginmatning
+            const scoreInputs = document.querySelectorAll('.score-input');
+            scoreInputs.forEach(input => {
+                input.addEventListener('input', updateScores);
+            });
+            
+            // Skriv ut funktion
+            document.getElementById('print-btn').addEventListener('click', function() {
+                window.print();
+            });
+            
+            // Återställ formulär
+            document.getElementById('reset-btn').addEventListener('click', function() {
+                if(confirm('Är du säker på att du vill återställa formuläret? All data kommer att försvinna.')) {
+                    // Start av den uppdaterade koden
+                    const allInputs = document.querySelectorAll('input, textarea');
+                    allInputs.forEach(input => {
+                        if (input.type === 'date') {
+                            input.valueAsDate = new Date();
+                        } else if (input.type === 'text' || input.type === 'number') {
+                            input.value = '';
+                        }
+                    });
+                    
+                    document.getElementById('match-type').value = 'träning';
+                    
+                    document.getElementById('team1-total').textContent = '0';
+                    document.getElementById('team2-total').textContent = '0';
+                    document.getElementById('match-winner').textContent = '-';
+                    document.getElementById('final-winner').textContent = '-';
+                    document.getElementById('rounds-played').textContent = '0';
+                    
+                    const roundWinners = document.querySelectorAll('.round-winner');
+                    roundWinners.forEach(cell => {
+                        cell.textContent = '';
+                    });
+                    // Slut på den uppdaterade koden
+                }
+            });
+            
+            function updateHeaders() {
+                const team1Name = document.getElementById('team1-name').value || 'Lag 1';
+                const team2Name = document.getElementById('team2-name').value || 'Lag 2';
+                
+                document.getElementById('team1-header').textContent = team1Name;
+                document.getElementById('team2-header').textContent = team2Name;
+            }
+            
+            function updateScores() {
+                let team1Total = 0;
+                let team2Total = 0;
+                let roundsPlayed = 0;
+                
+                // Beräkna totalpoäng och vinnare för varje omgång
+                for (let i = 1; i <= 13; i++) {
+                    const team1Score = parseInt(document.querySelector(`.score-input[data-team="1"][data-round="${i}"]`).value) || 0;
+                    const team2Score = parseInt(document.querySelector(`.score-input[data-team="2"][data-round="${i}"]`).value) || 0;
+                    
+                    if (team1Score > 0 || team2Score > 0) {
+                        roundsPlayed++;
+                    }
+                    
+                    team1Total += team1Score;
+                    team2Total += team2Score;
+                    
+                    // Bestäm vinnare av omgången
+                    const roundWinnerCell = document.querySelector(`.round-winner[data-round="${i}"]`);
+                    if (team1Score > team2Score) {
+                        roundWinnerCell.textContent = document.getElementById('team1-name').value || 'Lag 1';
+                    } else if (team2Score > team1Score) {
+                        roundWinnerCell.textContent = document.getElementById('team2-name').value || 'Lag 2';
+                    } else if (team1Score === 0 && team2Score === 0) {
+                        roundWinnerCell.textContent = '';
+                    } else {
+                        roundWinnerCell.textContent = 'Oavgjort';
+                    }
+                }
+                
+                // Uppdatera totalerna
+                document.getElementById('team1-total').textContent = team1Total;
+                document.getElementById('team2-total').textContent = team2Total;
+                document.getElementById('rounds-played').textContent = roundsPlayed;
+                
+                // Bestäm matchvinnare
+                const matchWinnerCell = document.getElementById('match-winner');
+                const finalWinnerSpan = document.getElementById('final-winner');
+                
+                if (team1Total > team2Total) {
+                    matchWinnerCell.textContent = document.getElementById('team1-name').value || 'Lag 1';
+                    finalWinnerSpan.textContent = document.getElementById('team1-name').value || 'Lag 1';
+                } else if (team2Total > team1Total) {
+                    matchWinnerCell.textContent = document.getElementById('team2-name').value || 'Lag 2';
+                    finalWinnerSpan.textContent = document.getElementById('team2-name').value || 'Lag 2';
+                } else {
+                    matchWinnerCell.textContent = 'Oavgjort';
+                    finalWinnerSpan.textContent = 'Oavgjort';
+                }
+            }
+        });
+;    </script>
+</body>
+</html>
