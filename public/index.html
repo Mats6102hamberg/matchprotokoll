@@ -47,6 +47,17 @@
             padding: 8px;
             text-align: center;
         }
+        .round-note {
+            width: 100%;
+            border: 1px solid #ccc;
+            padding: 4px;
+            font-size: 12px;
+            text-align: left;
+        }
+        .round-note:focus {
+            border-color: #2c5545;
+            outline: none;
+        }
         th {
             background-color: #2c5545;
             color: white;
@@ -145,7 +156,7 @@
                 <th>Omgång</th>
                 <th id="team1-header">Lag 1</th>
                 <th id="team2-header">Lag 2</th>
-                <th>Vinnare av omgången</th>
+                <th>Notis om omgången</th>
             </tr>
         </thead>
          <tbody>
@@ -153,79 +164,79 @@
                 <td>1</td>
                 <td><input type="number" min="0" class="score-input" data-team="1" data-round="1"></td>
                 <td><input type="number" min="0" class="score-input" data-team="2" data-round="1"></td>
-                <td class="round-winner" data-round="1"></td>
+                <td><input type="text" class="round-note" data-round="1" placeholder="T.ex. bra kast, nära målet..."></td>
             </tr>
             <tr>
                 <td>2</td>
                 <td><input type="number" min="0" class="score-input" data-team="1" data-round="2"></td>
                 <td><input type="number" min="0" class="score-input" data-team="2" data-round="2"></td>
-                <td class="round-winner" data-round="2"></td>
+                <td><input type="text" class="round-note" data-round="2" placeholder="T.ex. bra kast, nära målet..."></td>
             </tr>
             <tr>
                 <td>3</td>
                 <td><input type="number" min="0" class="score-input" data-team="1" data-round="3"></td>
                 <td><input type="number" min="0" class="score-input" data-team="2" data-round="3"></td>
-                <td class="round-winner" data-round="3"></td>
+                <td><input type="text" class="round-note" data-round="3" placeholder="T.ex. bra kast, nära målet..."></td>
             </tr>
             <tr>
                 <td>4</td>
                 <td><input type="number" min="0" class="score-input" data-team="1" data-round="4"></td>
                 <td><input type="number" min="0" class="score-input" data-team="2" data-round="4"></td>
-                <td class="round-winner" data-round="4"></td>
+                <td><input type="text" class="round-note" data-round="4" placeholder="T.ex. bra kast, nära målet..."></td>
             </tr>
             <tr>
                 <td>5</td>
                 <td><input type="number" min="0" class="score-input" data-team="1" data-round="5"></td>
                 <td><input type="number" min="0" class="score-input" data-team="2" data-round="5"></td>
-                <td class="round-winner" data-round="5"></td>
+                <td><input type="text" class="round-note" data-round="5" placeholder="T.ex. bra kast, nära målet..."></td>
             </tr>
             <tr>
                 <td>6</td>
                 <td><input type="number" min="0" class="score-input" data-team="1" data-round="6"></td>
                 <td><input type="number" min="0" class="score-input" data-team="2" data-round="6"></td>
-                <td class="round-winner" data-round="6"></td>
+                <td><input type="text" class="round-note" data-round="6" placeholder="T.ex. bra kast, nära målet..."></td>
             </tr>
             <tr>
                 <td>7</td>
                 <td><input type="number" min="0" class="score-input" data-team="1" data-round="7"></td>
                 <td><input type="number" min="0" class="score-input" data-team="2" data-round="7"></td>
-                <td class="round-winner" data-round="7"></td>
+                <td><input type="text" class="round-note" data-round="7" placeholder="T.ex. bra kast, nära målet..."></td>
             </tr>
             <tr>
                 <td>8</td>
                 <td><input type="number" min="0" class="score-input" data-team="1" data-round="8"></td>
                 <td><input type="number" min="0" class="score-input" data-team="2" data-round="8"></td>
-                <td class="round-winner" data-round="8"></td>
+                <td><input type="text" class="round-note" data-round="8" placeholder="T.ex. bra kast, nära målet..."></td>
             </tr>
             <tr>
                 <td>9</td>
                 <td><input type="number" min="0" class="score-input" data-team="1" data-round="9"></td>
                 <td><input type="number" min="0" class="score-input" data-team="2" data-round="9"></td>
-                <td class="round-winner" data-round="9"></td>
+                <td><input type="text" class="round-note" data-round="9" placeholder="T.ex. bra kast, nära målet..."></td>
             </tr>
             <tr>
                 <td>10</td>
                 <td><input type="number" min="0" class="score-input" data-team="1" data-round="10"></td>
                 <td><input type="number" min="0" class="score-input" data-team="2" data-round="10"></td>
-                <td class="round-winner" data-round="10"></td>
+                <td><input type="text" class="round-note" data-round="10" placeholder="T.ex. bra kast, nära målet..."></td>
             </tr>
             <tr>
                 <td>11</td>
                 <td><input type="number" min="0" class="score-input" data-team="1" data-round="11"></td>
                 <td><input type="number" min="0" class="score-input" data-team="2" data-round="11"></td>
-                <td class="round-winner" data-round="11"></td>
+                <td><input type="text" class="round-note" data-round="11" placeholder="T.ex. bra kast, nära målet..."></td>
             </tr>
             <tr>
                 <td>12</td>
                 <td><input type="number" min="0" class="score-input" data-team="1" data-round="12"></td>
                 <td><input type="number" min="0" class="score-input" data-team="2" data-round="12"></td>
-                <td class="round-winner" data-round="12"></td>
+                <td><input type="text" class="round-note" data-round="12" placeholder="T.ex. bra kast, nära målet..."></td>
             </tr>
             <tr>
                 <td>13</td>
                 <td><input type="number" min="0" class="score-input" data-team="1" data-round="13"></td>
                 <td><input type="number" min="0" class="score-input" data-team="2" data-round="13"></td>
-                <td class="round-winner" data-round="13"></td>
+                <td><input type="text" class="round-note" data-round="13" placeholder="T.ex. bra kast, nära målet..."></td>
             </tr>
         </tbody>
         <tfoot>
@@ -274,7 +285,7 @@
             
             console.log('updateScores called');
             
-            // Beräkna totalpoäng och vinnare för varje omgång
+            // Beräkna totalpoäng för varje omgång
             for (let i = 1; i <= 13; i++) {
                 const team1Input = document.querySelector(`.score-input[data-team="1"][data-round="${i}"]`);
                 const team2Input = document.querySelector(`.score-input[data-team="2"][data-round="${i}"]`);
@@ -290,18 +301,6 @@
                 
                 team1Total += team1RoundScore;
                 team2Total += team2RoundScore;
-                
-                // Bestäm vinnare av omgången
-                const roundWinnerCell = document.querySelector(`.round-winner[data-round="${i}"]`);
-                if (team1RoundScore > team2RoundScore) {
-                    roundWinnerCell.textContent = document.getElementById('team1-name').value || 'Lag 1';
-                } else if (team2RoundScore > team1RoundScore) {
-                    roundWinnerCell.textContent = document.getElementById('team2-name').value || 'Lag 2';
-                } else if (team1RoundScore === 0 && team2RoundScore === 0) {
-                    roundWinnerCell.textContent = '';
-                } else {
-                    roundWinnerCell.textContent = 'Oavgjort';
-                }
             }
             
             console.log(`Totaler: Lag1=${team1Total}, Lag2=${team2Total}`);
@@ -354,11 +353,6 @@
                 document.getElementById('rounds-played').textContent = '0';
                 document.getElementById('team1-header').textContent = 'Lag 1';
                 document.getElementById('team2-header').textContent = 'Lag 2';
-                
-                const roundWinners = document.querySelectorAll('.round-winner');
-                roundWinners.forEach(cell => {
-                    cell.textContent = '';
-                });
             }
         }
 
